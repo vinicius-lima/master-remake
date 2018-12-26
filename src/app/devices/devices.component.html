@@ -1,3 +1,28 @@
-<p>
-  devices works!
-</p>
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <th scope="col">ID</th>
+      <th scope="col">Type</th>
+      <th scope="col">Screen size (px)</th>
+      <th scope="col">Battery</th>
+      <th scope="col">Keyboard</th>
+      <th scope="col">Location</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let device of scope.devices">
+        <td>{{ device.id }}</td>
+        <td>{{ device.type.value }}</td>
+        <td>{{ device.width }} x {{ device.height }}</td>
+        <td>
+          <span class="fa fa-check positive" *ngIf="device.battery"></span>
+          <span class="fa fa-times negative" *ngIf="!device.battery"></span>
+        </td>
+        <td>
+          <span class="fa fa-check positive" *ngIf="device.keyboard"></span>
+          <span class="fa fa-times negative" *ngIf="!device.keyboard"></span>
+        </td>
+        <td>{{ device.location.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

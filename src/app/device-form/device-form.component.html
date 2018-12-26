@@ -1,3 +1,88 @@
-<p>
-  device-form works!
-</p>
+<form>
+  <h3>New Device:</h3>
+  <div class="form-group">
+    <label for="deviceType">Device Type:</label>
+    <select
+      id="deviceType"
+      name="deviceType"
+      class="form-control"
+      [(ngModel)]="formDevice.type.value"
+    >
+      <option *ngFor="let type of scope.deviceTypes" [value]="type.value">{{
+        type.value
+      }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="deviceWidth">Width:</label>
+    <input
+      id="deviceWidth"
+      name="deviceWidth"
+      class="form-control"
+      type="number"
+      placeholder="Width"
+      min="1"
+      [(ngModel)]="formDevice.width"
+      (change)="checkValue('width')"
+      #deviceWidth="ngModel"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="deviceHeight">Height:</label>
+    <input
+      id="deviceHeight"
+      name="deviceHeight"
+      class="form-control"
+      type="number"
+      placeholder="Height"
+      min="1"
+      [(ngModel)]="formDevice.height"
+      (change)="checkValue('height')"
+      #deviceHeight="ngModel"
+      required
+    />
+  </div>
+  <div class="form-check">
+    <input
+      id="hasBattery"
+      name="hasBattery"
+      class="custom-control-input form-control"
+      type="checkbox"
+      [(ngModel)]="formDevice.battery"
+    />
+    <label class="custom-control-label" for="hasBattery">Battery</label>
+  </div>
+  <div class="form-check">
+    <input
+      id="hasKeyboard"
+      name="hasKeyboard"
+      class="custom-control-input form-control"
+      type="checkbox"
+      [(ngModel)]="formDevice.keyboard"
+    />
+    <label class="custom-control-label" for="hasKeyboard">Keyboard</label>
+  </div>
+  <div class="form-group" style="margin-top: 10px;">
+    <label for="deviceLocation">Location:</label>
+    <select
+      id="deviceLocation"
+      name="deviceLocation"
+      class="form-control"
+      [(ngModel)]="formDevice.location.value"
+    >
+      <option
+        *ngFor="let location of scope.locations"
+        [value]="location.value"
+        >{{ location.value }}</option
+      >
+    </select>
+  </div>
+  <button
+    class="btn btn-success"
+    (click)="registerDevice()"
+    [disabled]="deviceWidth.invalid || deviceHeight.invalid || invalidInput"
+  >
+    &#10004; Save Changes
+  </button>
+</form>

@@ -1,3 +1,14 @@
-<p>
-  device-management works!
-</p>
+<div class="container">
+  <h3>Devices</h3>
+  <app-devices></app-devices>
+</div>
+<button type="button" class="btn btn-success" (click)="addDevice()">
+  <span class="fa fa-plus"></span> Add Device
+</button>
+<br />
+<button type="button" class="btn btn-outline-primary">
+  <span class="fa fa-sync"></span> Refresh
+</button>
+<div *ngIf="!hideform" class="container">
+  <app-device-form></app-device-form>
+</div>

@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
-import { AppComponent } from './app.component';
-import { DeviceManagementComponent } from './device-management/device-management.component';
-import { PreferenceManagementComponent } from './preference-management/preference-management.component';
-import { DevicesComponent } from './devices/devices.component';
-import { DeviceFormComponent } from './device-form/device-form.component';
+import { AppComponent } from "./app.component";
+import { DeviceManagementComponent } from "./device-management/device-management.component";
+import { PreferenceManagementComponent } from "./preference-management/preference-management.component";
+import { DevicesComponent } from "./devices/devices.component";
+import { DeviceFormComponent } from "./device-form/device-form.component";
 
 @NgModule({
   declarations: [
@@ -15,10 +16,8 @@ import { DeviceFormComponent } from './device-form/device-form.component';
     DevicesComponent,
     DeviceFormComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
