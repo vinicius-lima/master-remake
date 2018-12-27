@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ScopeService } from "../scope.service";
 
 @Component({
   selector: "app-device-management",
@@ -8,11 +9,15 @@ import { Component, OnInit } from "@angular/core";
 export class DeviceManagementComponent implements OnInit {
   hideform: boolean = true;
 
-  constructor() {}
+  constructor(private scope: ScopeService) {}
 
   ngOnInit() {}
 
   addDevice() {
     this.hideform = !this.hideform;
+  }
+
+  refresh() {
+    this.scope.refresh();
   }
 }

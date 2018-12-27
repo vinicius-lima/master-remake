@@ -56,4 +56,19 @@ export class AwsApiGatewayService {
       httpOptions
     );
   }
+
+  addDevice(device): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Origin": "*"
+      })
+    };
+    return this.http.post<any>(
+      `${this.apiConfig.baseUrl}`,
+      device,
+      httpOptions
+    );
+  }
 }

@@ -67,4 +67,10 @@ export class AwsMockService {
   getRegistredDevices(): Device[] {
     return this.devices;
   }
+
+  addDevice(device: Device): boolean {
+    const old_len = this.devices.length;
+    const new_len = this.devices.push(device);
+    return new_len > old_len;
+  }
 }

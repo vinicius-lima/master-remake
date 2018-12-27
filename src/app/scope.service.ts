@@ -52,4 +52,52 @@ export class ScopeService {
     //   });
     // });
   }
+
+  refresh() {
+    this.awsMockService.getRegistredDevices();
+  }
+
+  addDevice(formDevice: Device): boolean {
+    formDevice.id = this.createId(1, 1001);
+
+    formDevice.type = this.deviceTypes.find(
+      type => formDevice.type.value === type.value
+    );
+
+    formDevice.location = this.locations.find(
+      location => formDevice.location.value === location.value
+    );
+
+    return this.awsMockService.addDevice(formDevice);
+
+    // this.awsApiGateway
+    //   .addDevice({
+    //     id: formDevice.id,
+    //     type: formDevice.type.id,
+    //     width: formDevice.width,
+    //     height: formDevice.height,
+    //     battery: formDevice.battery,
+    //     keyboard: formDevice.keyboard,
+    //     location: formDevice.location.id
+    //   })
+    //   .subscribe(
+    //     response => {
+    //       if (response.HTTPStatusCode == 200) {
+    //         this.devices.push(formDevice);
+    //       }
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     }
+    //   );
+    // return true;
+  }
+
+  private createId(min: number, max: number): number {
+    let id = -1;
+    do {
+      id = Math.floor(Math.random() * (max - min)) + min;
+    } while (this.devices.findIndex(device => device.id === id) > -1);
+    return id;
+  }
 }

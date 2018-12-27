@@ -20,13 +20,14 @@ export class DeviceFormComponent implements OnInit {
   private clearFormDevice() {
     this.formDevice = {
       id: -1,
-      type: this.scope.deviceTypes[0],
+      type: Object.assign({}, this.scope.deviceTypes[0]),
       width: 0,
       height: 0,
       battery: false,
       keyboard: false,
-      location: this.scope.locations[0]
+      location: Object.assign({}, this.scope.locations[0])
     };
+    this.invalidInput = true;
   }
 
   checkValue(attr: string) {
@@ -37,5 +38,9 @@ export class DeviceFormComponent implements OnInit {
     }
   }
 
-  registerDevice() {}
+  registerDevice() {
+    if (this.scope.addDevice(this.formDevice)) {
+      this.clearFormDevice();
+    }
+  }
 }
